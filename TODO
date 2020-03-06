@@ -1,0 +1,26 @@
+Code:
+  ☐ open traefik docs
+
+Docker:
+  Http:
+    ✔ middlewares
+    ✔ docker
+    ✔ routers
+    ✔ services
+  Tcp:
+    ✔ routers
+    ✔ services
+
+Kubernetes:
+
+Consul:
+
+Marathon:
+
+Rancher:
+
+Todo:
+  ☐ check if inside the lables tag
+  ☐ trigger snippets if prefix is '- '
+
+Archive:
