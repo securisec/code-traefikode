@@ -2,11 +2,6 @@ import * as vscode from 'vscode';
 import { completeOptions, checkPrefix } from '../helpers';
 import { dockerKeys } from './docker-keys';
 
-let servicesRegex = (regex: string, l: string) => {
-	let r = `traefik.tcp.services.[\\w_-]+\\.${regex}\\.$`;
-	return new RegExp(r).test(l);
-};
-
 let routersRegex = (regex: string, l: string) => {
 	let r = `traefik.tcp.routers.[\\w_-]+\\.${regex}\\.$`;
 	return new RegExp(r).test(l);

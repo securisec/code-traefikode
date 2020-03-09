@@ -203,12 +203,150 @@ export const dockerKeys = {
 		}
 	},
 	enable: null,
-	docker: { lbswarm: null, network: null }
+	docker: { lbswarm: null, network: null },
+	providers: {
+		docker: {
+			endpoint: null,
+			useBindPortIP: null,
+			exposedByDefault: null,
+			network: null,
+			defaultRole: null,
+			swarmMode: null,
+			swarmModeRefreshSeconds: null,
+			watch: null,
+			constraints: null,
+			tls: {
+				ca: null,
+				caOptional: null,
+				cert: null,
+				key: null,
+				insecureSkipVerify: null
+			}
+		},
+		kubernetescrd: {
+			endpoint: null,
+			token: null,
+			certauthfilepath: null,
+			namespaces: null,
+			labelselector: null,
+			ingressclass: null,
+			throttleDuration: null
+		},
+		kubernetesingress: {
+			endpoint: null,
+			token: null,
+			certauthfilepath: null,
+			disablepasshostheaders: null,
+			namespaces: null,
+			labelselector: null,
+			ingressclass: null,
+			ingressendpoint: {
+				hostname: null,
+				ip: null,
+				publishedservice: null
+			},
+			throttleDuration: null
+		},
+		consulcatalog: {
+			refreshInternal: null,
+			prefix: null,
+			requireConsistent: null,
+			stale: null,
+			cache: null,
+			endpoint: {
+				address: null,
+				scheme: null,
+				datacenter: null,
+				token: null,
+				endpointwaittime: null,
+				httpauth: {
+					username: null,
+					password: null
+				},
+				tls: {
+					ca: null,
+					caoptional: null,
+					cert: null,
+					key: null,
+					insecureSkipVerify: null
+				}
+			},
+			exposedByDefault: null,
+			defaultRule: null,
+			constraints: null
+		},
+		marathon: {
+			basic: {
+				httpbasicauthuser: null,
+				httpbasicpassword: null
+			},
+			dcosToken: null,
+			defaultRule: null,
+			dialerTimeout: null,
+			endpoint: null,
+			exposedByDefault: null,
+			constraints: null,
+			forceTaskHostname: null,
+			keepAlive: null,
+			respectReadinessChecks: null,
+			responseHeaderTimeout: null,
+			tls: {
+				ca: null,
+				cert: null,
+				caoptional: null,
+				key: null,
+				insecureSkipVerify: null
+			},
+			trace: null,
+			watch: null
+		},
+		rancher: {
+			exposedByDefault: null,
+			defaultRule: null,
+			enableServiceHealthFilter: null,
+			refreshSeconds: null,
+			intervalPoll: null,
+			prefix: null,
+			constraints: null
+		},
+		file: {
+			filename: null,
+			directory: null,
+			watch: null
+		}
+	},
+	api: {
+		insecure: null,
+		dashboard: null,
+		debug: null
+	},
+	entryPoints: {
+		address: null,
+		transport: {
+			lifeCycle: {
+				requestAcceptGraceTimeout: null,
+				graceTimeOut: null
+			},
+			respondingTimeouts: {
+				readTimeout: null,
+				writeTimeout: null,
+				idleTimeout: null
+			}
+		},
+		proxyProtocol: {
+			insecure: null,
+			trustedIPs: null
+		},
+		forwardedHeaders: {
+			insecure: null,
+			trustedIPs: null
+		}
+	}
 };
 
 export const ruleOptions = [
 	'Host(``)',
-	'HostRegexp(`${1:here}`)',
+	'HostRegexp(``)',
 	'Headers(``)',
 	'HeadersRegexp(``)',
 	'Method(``)',

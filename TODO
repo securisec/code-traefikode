@@ -2,21 +2,23 @@ Code:
   ☐ open traefik docs
   ☐ only work with docker-compose.*.ya?ml
   ☐ only work with traefik.*.ya?ml
+    ☐ provide intellisense inside nested traefik config yaml
   ☐ only work with Dockerfile
     ☐ Dockerfile is not working fully
 
 Snippets:
-  ☐ traefik api
+
+Traefik:
+  Providers:
+  Cli:
+    ☐ entrypoints
 
 Docker:
+  Config:
+    ☐ config file yaml
+      ☐ exposedbydefault https://docs.traefik.io/providers/docker/#exposedbydefault
   Http:
-    ✔ middlewares
-    ✔ docker
-    ✔ routers
-    ✔ services
   Tcp:
-    ✔ routers
-    ✔ services
 
 Kubernetes:
 
@@ -31,3 +33,19 @@ Todo:
   ☐ trigger snippets if prefix is '- '
 
 Archive:
+  ✔ stop suggestion after =  @project(Code)
+  ✔ traefik api @project(Snippets)
+  ✔ intellisense for docker providers @project(Traefik.Providers)
+  ✔ kubernetes ingress route @project(Traefik.Providers)
+  ✔ kubernetes ingress @project(Traefik.Providers)
+  ✔ consul @project(Traefik.Providers)
+  ✔ marathon @project(Traefik.Providers)
+  ✔ rancher @project(Traefik.Providers)
+  ✔ file @project(Traefik.Providers)
+  ✔ api config options @project(Traefik.Api)
+  ✔ middlewares @project(Docker.Http)
+  ✔ docker @project(Docker.Http)
+  ✔ routers @project(Docker.Http)
+  ✔ services @project(Docker.Http)
+  ✔ routers @project(Docker.Tcp)
+  ✔ services @project(Docker.Tcp)

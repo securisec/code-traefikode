@@ -12,24 +12,6 @@ let middlewaresRegex = (regex: string, l: string) => {
 	return new RegExp(r).test(l);
 };
 
-const dockerCompleter = vscode.languages.registerCompletionItemProvider(
-	['yaml', 'dockerfile'],
-	{
-		provideCompletionItems(
-			document: vscode.TextDocument,
-			position: vscode.Position
-		) {
-			let linePrefix = checkPrefix(document, position);
-			if (!linePrefix.endsWith('traefik.')) {
-				return undefined;
-			}
-
-			return completeOptions(['http', 'tcp', 'docker', 'enable', 'backend']);
-		}
-	},
-	'.'
-);
-
 const httpTcpCompleter = vscode.languages.registerCompletionItemProvider(
 	'yaml',
 	{
@@ -293,10 +275,4 @@ const httpMiddlewares = vscode.languages.registerCompletionItemProvider(
 	'.'
 );
 
-export default [
-	dockerCompleter,
-	httpTcpCompleter,
-	httpRouter,
-	httpServices,
-	httpMiddlewares
-];
+export default [httpTcpCompleter, httpRouter, httpServices, httpMiddlewares];

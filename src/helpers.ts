@@ -1,3 +1,5 @@
+import * as vscode from 'vscode';
+
 import {
 	CompletionItem,
 	CompletionItemKind,
@@ -13,4 +15,12 @@ export const completeOptions = (options: Array<string>) => {
 
 export const checkPrefix = (document: TextDocument, position: Position) => {
 	return document.lineAt(position).text.substr(0, position.character);
+};
+
+export const checkIfTraefik = (
+	document: vscode.TextDocument,
+	position: vscode.Position
+) => {
+	let currentLine = document.lineAt(position).text;
+	return new RegExp(/-\s?t(?<!=)$/).test(currentLine);
 };
