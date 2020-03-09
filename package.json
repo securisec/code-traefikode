@@ -21,11 +21,52 @@
 		"onLanguage:dockerfile"
 	],
 	"contributes": {
-		"editor/context": [
+		"languages": [
 			{
-				"when": "resourceFilename =~ /^docker-compose.(?:[\\w_-].+)?ya?ml$/i"
+				"id": "dockerfile",
+				"aliases": [
+					"Dockerfile"
+				],
+				"filenamePatterns": [
+					"*.dockerfile",
+					"Dockerfile",
+					"Dockerfile.debug",
+					"Dockerfile.dev",
+					"Dockerfile.develop",
+					"Dockerfile.prod"
+				]
+			},
+			{
+				"id": "yaml",
+				"aliases": [
+					"docker-compose"
+				],
+				"filenamePatterns": [
+					"docker-compose.yaml",
+					"docker-compose.yaml",
+					"docker-compose.*.yaml",
+					"docker-compose.*.yml",
+					"traefik.yml",
+					"traefik.yaml"
+				]
 			}
-		]
+		],
+		"configurationDefaults": {
+			"[yaml]": {
+				"editor.quickSuggestions": {
+					"other": true,
+					"comments": false,
+					"strings": true
+				}
+			},
+			"[dockerfile]": {
+				"editor.quickSuggestions": {
+					"other": true,
+					"comments": false,
+					"strings": true
+				}
+			}
+		}
 	},
 	"main": "./out/extension.js",
 	"scripts": {

@@ -1,5 +1,12 @@
 Code:
   ☐ open traefik docs
+  ☐ only work with docker-compose.*.ya?ml
+  ☐ only work with traefik.*.ya?ml
+  ☐ only work with Dockerfile
+    ☐ Dockerfile is not working fully
+
+Snippets:
+  ☐ traefik api
 
 Docker:
   Http:

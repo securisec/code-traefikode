@@ -13,7 +13,7 @@ let routersRegex = (regex: string, l: string) => {
 };
 
 const tcpRouters = vscode.languages.registerCompletionItemProvider(
-	'yaml',
+	['yaml', 'dockerfile'],
 	{
 		provideCompletionItems(
 			document: vscode.TextDocument,

@@ -13,7 +13,7 @@ let middlewaresRegex = (regex: string, l: string) => {
 };
 
 const dockerCompleter = vscode.languages.registerCompletionItemProvider(
-	'yaml',
+	['yaml', 'dockerfile'],
 	{
 		provideCompletionItems(
 			document: vscode.TextDocument,
