@@ -2,13 +2,13 @@
 	"name": "traefikode",
 	"displayName": "traefikode",
 	"description": "traefik auto complete",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"author": {
 		"name": "Hapsida @securisec"
 	},
 	"publisher": "securisec",
 	"repository": {
-		"url": "https://github.com/securisec/traefikode"
+		"url": "https://github.com/securisec/code-traefikode"
 	},
 	"engines": {
 		"vscode": "^1.42.0"

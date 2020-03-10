@@ -154,7 +154,15 @@ const middlewareSnippets = vscode.languages.registerCompletionItemProvider(
 					makeSnippet({
 						label: 'traefikRedirectToHTTPSSSL',
 						text:
-							'"traefik.http.middlewares.${1:https_redirect}.redirectscheme.scheme=https"\n- "traefik.http.middlewares.${1:https_redirect}.redirectscheme.permanent=true"\n- "traefik.http.routers.${2:http_catchall}.rule=HostRegexp(`{any:.+}`)"\n- "traefik.http.routers.${2:http_catchall}.entrypoints=http"\n- "traefik.http.routers.${2:http_catchall}.middlewares=${:https_redirect}"'
+							'"traefik.http.middlewares.${1:https_redirect}.redirectscheme.scheme=https"\n- "traefik.http.middlewares.${1:https_redirect}.redirectscheme.permanent=true"\n- "traefik.http.routers.${2:http_catchall}.rule=HostRegexp(`{any:.+}`)"\n- "traefik.http.routers.${2:http_catchall}.entrypoints=http"\n- "traefik.http.routers.${2:http_catchall}.middlewares=${1:https_redirect}"'
+					})
+				);
+
+				allItems.push(
+					makeSnippet({
+						label: 'traefikServerPort',
+						text:
+							'"traefik.http.services.${1:myservice}.loadbalancer.server.port=${2:port}"'
 					})
 				);
 
