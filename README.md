@@ -5,6 +5,7 @@ Simple [Traefik](https://docs.traefik.io/routing/providers/docker/) snippets and
 **Help Needed** Please refer to the TODO section for help required.
 
 ## Usage
+- [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=securisec.traefikode)
 - The autocompleter will trigger when a `-` is followed by `--`, i.e cli options
 - A `-` followed by the word traefik
 

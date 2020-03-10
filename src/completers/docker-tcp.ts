@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { completeOptions, checkPrefix } from '../helpers';
+import { completeOptions, checkPrefix, isComposeFile } from '../helpers';
 import { dockerKeys } from './docker-keys';
 
 let routersRegex = (regex: string, l: string) => {
@@ -16,16 +16,18 @@ const tcpRouters = vscode.languages.registerCompletionItemProvider(
 		) {
 			let linePrefix = checkPrefix(document, position);
 
-			if (new RegExp(/traefik\.tcp\.routers\.[\w_-]+\.$/).test(linePrefix)) {
-				return completeOptions(Object.keys(dockerKeys.tcp.routers));
-			}
-			if (routersRegex('tls', linePrefix)) {
-				return completeOptions(Object.keys(dockerKeys.tcp.routers.tls));
-			}
-			if (routersRegex('tls.domains\\[n\\]', linePrefix)) {
-				return completeOptions(
-					Object.keys(dockerKeys.tcp.routers.tls['domains[n]'])
-				);
+			if (isComposeFile(document)) {
+				if (new RegExp(/traefik\.tcp\.routers\.[\w_-]+\.$/).test(linePrefix)) {
+					return completeOptions(Object.keys(dockerKeys.tcp.routers));
+				}
+				if (routersRegex('tls', linePrefix)) {
+					return completeOptions(Object.keys(dockerKeys.tcp.routers.tls));
+				}
+				if (routersRegex('tls.domains\\[n\\]', linePrefix)) {
+					return completeOptions(
+						Object.keys(dockerKeys.tcp.routers.tls['domains[n]'])
+					);
+				}
 			}
 			return;
 		}
@@ -42,11 +44,13 @@ const tcpServices = vscode.languages.registerCompletionItemProvider(
 		) {
 			let linePrefix = checkPrefix(document, position);
 
-			if (new RegExp(/traefik\.tcp\.services\.[\w_-]+\.$/).test(linePrefix)) {
-				return completeOptions(Object.keys(dockerKeys.tcp.services));
-			}
-			if (routersRegex('server', linePrefix)) {
-				return completeOptions(Object.keys(dockerKeys.tcp.services.server));
+			if (isComposeFile(document)) {
+				if (new RegExp(/traefik\.tcp\.services\.[\w_-]+\.$/).test(linePrefix)) {
+					return completeOptions(Object.keys(dockerKeys.tcp.services));
+				}
+				if (routersRegex('server', linePrefix)) {
+					return completeOptions(Object.keys(dockerKeys.tcp.services.server));
+				}
 			}
 
 			return;

@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { completeOptions, checkPrefix } from '../helpers';
+import { completeOptions, checkPrefix, isComposeFile } from '../helpers';
 import { dockerKeys } from '../completers/docker-keys';
 
 let cliEntryRegex = (regex: string, l: string) => {
@@ -16,13 +16,13 @@ const cliEntrypoints = vscode.languages.registerCompletionItemProvider(
 		) {
 			let linePrefix = checkPrefix(document, position);
 
-			if (new RegExp(/--\s?["']?entryPoints\.[\w_-]+\.$/).test(linePrefix)) {
-				return completeOptions(Object.keys(dockerKeys.entryPoints));
-			}
-			if (cliEntryRegex('transport', linePrefix)) {
-				return completeOptions(
-					Object.keys(dockerKeys.entryPoints.transport)
-				);
+			if (isComposeFile(document)) {
+				if (new RegExp(/--\s?["']?entryPoints\.[\w_-]+\.$/).test(linePrefix)) {
+					return completeOptions(Object.keys(dockerKeys.entryPoints));
+				}
+				if (cliEntryRegex('transport', linePrefix)) {
+					return completeOptions(Object.keys(dockerKeys.entryPoints.transport));
+				}
 			}
 			return;
 		}

@@ -1,17 +1,14 @@
 Code:
   ☐ open traefik docs
-  ☐ only work with docker-compose.*.ya?ml
   ☐ only work with traefik.*.ya?ml
     ☐ provide intellisense inside nested traefik config yaml
-  ☐ only work with Dockerfile
-    ☐ Dockerfile is not working fully
+  ☐ Work with Dockerfile
 
 Snippets:
 
 Traefik:
   Providers:
   Cli:
-    ☐ entrypoints
 
 Docker:
   Config:
@@ -30,9 +27,11 @@ Rancher:
 
 Todo:
   ☐ check if inside the lables tag
-  ☐ trigger snippets if prefix is '- '
 
 Archive:
+  ✔ only work with docker-compose.*.ya?ml @project(Code)
+  ✔ entrypoints @project(Traefik.Cli)
+  ✔ trigger snippets if prefix is '- ' @project(Todo)
   ✔ stop suggestion after =  @project(Code)
   ✔ traefik api @project(Snippets)
   ✔ intellisense for docker providers @project(Traefik.Providers)
