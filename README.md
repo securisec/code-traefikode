@@ -14,7 +14,7 @@ Intellisense works for the following:
 - Traefik labels for a container.
 
 <p align="center">
-    <img src="https://github.com/securisec/code-traefikode/raw/master/resources/cli.gif" width="65%">
+    <img src="https://github.com/securisec/code-traefikode/raw/master/resources/%20cli.gif" width="65%">
 </p>
 
 ## Snippets
