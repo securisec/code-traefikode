@@ -8,6 +8,7 @@ import CliOther from './cli/cli-other';
 import dockerTcpCompleter from './completers/docker-tcp';
 import dockerHttpSnippets from './snippets/docker-http-snippets';
 import dockerTcpSnippets from './snippets/docker-tcp-snippets';
+import traefikEnvars from './snippets/traefik-envars';
 
 const cliOptions = [
 	...ProviderOptions,
@@ -15,7 +16,7 @@ const cliOptions = [
 	...EntrypointOptions,
 	...CliOther
 ];
-const snippets = [...dockerHttpSnippets, ...dockerTcpSnippets];
+const snippets = [...dockerHttpSnippets, ...dockerTcpSnippets, ...traefikEnvars];
 const completers = [
 	...traefikCompleter,
 	...dockerHttpCompleter,

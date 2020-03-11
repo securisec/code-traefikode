@@ -6,29 +6,18 @@ Code:
 
 Snippets:
 
-Traefik:
-  Providers:
-  Cli:
-
 Docker:
   Config:
     ☐ config file yaml
       ☐ exposedbydefault https://docs.traefik.io/providers/docker/#exposedbydefault
-  Http:
-  Tcp:
-
-Kubernetes:
-
-Consul:
-
-Marathon:
-
-Rancher:
+    Http:
+    Tcp:
 
 Todo:
   ☐ check if inside the lables tag
 
 Archive:
+  ✔ envars snippets @project(Snippets.Env vars)
   ✔ https://docs.traefik.io/reference/static-configuration/cli/ @project(Traefik.Cli)
   ✔ accesslog @project(Traefik.Cli)
   ✔ api @project(Traefik.Cli)

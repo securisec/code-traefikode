@@ -26,6 +26,14 @@ export const checkIfTraefik = (
 	return new RegExp(/-\s?t(?<!=)$/).test(currentLine);
 };
 
+export const checkIfEnvars = (
+	document: vscode.TextDocument,
+	position: vscode.Position
+) => {
+	let currentLine = document.lineAt(position).text;
+	return new RegExp(/-\s?T(?<!=)$/).test(currentLine);
+};
+
 export const isComposeFile = (document: vscode.TextDocument) => {
 	let fileName = basename(document.uri.fsPath);
 	return new RegExp(/docker-compose\.(\w+)?.?ya?ml/, 'i').test(fileName);
