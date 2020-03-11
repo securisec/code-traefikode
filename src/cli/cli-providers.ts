@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { completeOptions, checkPrefix, isComposeFile } from '../helpers';
-import { dockerKeys } from '../completers/docker-keys';
+import { staticConfig } from '../completers/docker-keys';
 
 let cliProviderRegex = (regex: string, l: string) => {
 	let r = `\\-\\-\\s?["']?providers\\.${regex}\\.$`;
@@ -18,13 +18,35 @@ const cliDockerProviders = vscode.languages.registerCompletionItemProvider(
 
 			if (isComposeFile(document)) {
 				if (new RegExp(/--\s?["']?providers\.$/).test(linePrefix)) {
-					return completeOptions(Object.keys(dockerKeys.providers));
+					return completeOptions(Object.keys(staticConfig.providers));
 				}
 				if (new RegExp(/--\s?["']?providers\.docker\.$/).test(linePrefix)) {
-					return completeOptions(Object.keys(dockerKeys.providers.docker));
+					return completeOptions(Object.keys(staticConfig.providers.docker));
 				}
 				if (cliProviderRegex('docker.tls', linePrefix)) {
-					return completeOptions(Object.keys(dockerKeys.providers.docker.tls));
+					return completeOptions(
+						Object.keys(staticConfig.providers.docker.tls)
+					);
+				}
+				return;
+			}
+		}
+	},
+	'.'
+);
+
+const cliRestProviders = vscode.languages.registerCompletionItemProvider(
+	['yaml'],
+	{
+		provideCompletionItems(
+			document: vscode.TextDocument,
+			position: vscode.Position
+		) {
+			let linePrefix = checkPrefix(document, position);
+
+			if (isComposeFile(document)) {
+				if (new RegExp(/--\s?["']?providers\.rest\.$/).test(linePrefix)) {
+					return completeOptions(Object.keys(staticConfig.providers.rest));
 				}
 				return;
 			}
@@ -47,7 +69,7 @@ const cliKubernetescrdProviders = vscode.languages.registerCompletionItemProvide
 					new RegExp(/--\s?["']?providers\.kubernetescrd\.$/).test(linePrefix)
 				) {
 					return completeOptions(
-						Object.keys(dockerKeys.providers.kubernetescrd)
+						Object.keys(staticConfig.providers.kubernetescrd)
 					);
 				}
 				return;
@@ -73,12 +95,14 @@ const cliKubernetesingressProviders = vscode.languages.registerCompletionItemPro
 					)
 				) {
 					return completeOptions(
-						Object.keys(dockerKeys.providers.kubernetesingress)
+						Object.keys(staticConfig.providers.kubernetesingress)
 					);
 				}
 				if (cliProviderRegex('kubernetesingress.ingressendpoint', linePrefix)) {
 					return completeOptions(
-						Object.keys(dockerKeys.providers.kubernetesingress.ingressendpoint)
+						Object.keys(
+							staticConfig.providers.kubernetesingress.ingressendpoint
+						)
 					);
 				}
 			}
@@ -102,22 +126,22 @@ const cliConsulcatalogProviders = vscode.languages.registerCompletionItemProvide
 					new RegExp(/--\s?["']?providers\.consulcatalog\.$/).test(linePrefix)
 				) {
 					return completeOptions(
-						Object.keys(dockerKeys.providers.consulcatalog)
+						Object.keys(staticConfig.providers.consulcatalog)
 					);
 				}
 				if (cliProviderRegex('consulcatalog.endpoint', linePrefix)) {
 					return completeOptions(
-						Object.keys(dockerKeys.providers.consulcatalog.endpoint)
+						Object.keys(staticConfig.providers.consulcatalog.endpoint)
 					);
 				}
 				if (cliProviderRegex('consulcatalog.endpoint.httpauth', linePrefix)) {
 					return completeOptions(
-						Object.keys(dockerKeys.providers.consulcatalog.endpoint.httpauth)
+						Object.keys(staticConfig.providers.consulcatalog.endpoint.httpauth)
 					);
 				}
 				if (cliProviderRegex('consulcatalog.endpoint.tls', linePrefix)) {
 					return completeOptions(
-						Object.keys(dockerKeys.providers.consulcatalog.endpoint.tls)
+						Object.keys(staticConfig.providers.consulcatalog.endpoint.tls)
 					);
 				}
 				return;
@@ -138,16 +162,16 @@ const cliMarathonProviders = vscode.languages.registerCompletionItemProvider(
 
 			if (isComposeFile(document)) {
 				if (new RegExp(/--\s?["']?providers\.marathon\.$/).test(linePrefix)) {
-					return completeOptions(Object.keys(dockerKeys.providers.marathon));
+					return completeOptions(Object.keys(staticConfig.providers.marathon));
 				}
 				if (cliProviderRegex('marathon.basic', linePrefix)) {
 					return completeOptions(
-						Object.keys(dockerKeys.providers.marathon.basic)
+						Object.keys(staticConfig.providers.marathon.basic)
 					);
 				}
 				if (cliProviderRegex('marathon.endpoint.tls', linePrefix)) {
 					return completeOptions(
-						Object.keys(dockerKeys.providers.marathon.tls)
+						Object.keys(staticConfig.providers.marathon.tls)
 					);
 				}
 			}
@@ -168,7 +192,7 @@ const cliRancherProviders = vscode.languages.registerCompletionItemProvider(
 
 			if (isComposeFile(document)) {
 				if (new RegExp(/--\s?["']?providers\.rancher\.$/).test(linePrefix)) {
-					return completeOptions(Object.keys(dockerKeys.providers.rancher));
+					return completeOptions(Object.keys(staticConfig.providers.rancher));
 				}
 			}
 			return;
@@ -188,7 +212,7 @@ const cliFileProviders = vscode.languages.registerCompletionItemProvider(
 
 			if (isComposeFile(document)) {
 				if (new RegExp(/--\s?["']?providers\.file\.$/).test(linePrefix)) {
-					return completeOptions(Object.keys(dockerKeys.providers.file));
+					return completeOptions(Object.keys(staticConfig.providers.file));
 				}
 			}
 			return;
@@ -204,5 +228,6 @@ export default [
 	cliConsulcatalogProviders,
 	cliMarathonProviders,
 	cliRancherProviders,
-	cliFileProviders
+	cliFileProviders,
+	cliRestProviders
 ];

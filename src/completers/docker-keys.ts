@@ -203,7 +203,11 @@ export const dockerKeys = {
 		}
 	},
 	enable: null,
-	docker: { lbswarm: null, network: null },
+	docker: { lbswarm: null, network: null }
+};
+
+// constatnts for static config
+export const staticConfig = {
 	providers: {
 		docker: {
 			endpoint: null,
@@ -313,6 +317,9 @@ export const dockerKeys = {
 			filename: null,
 			directory: null,
 			watch: null
+		},
+		rest: {
+			insecure: null
 		}
 	},
 	api: {
@@ -340,6 +347,149 @@ export const dockerKeys = {
 		forwardedHeaders: {
 			insecure: null,
 			trustedIPs: null
+		}
+	},
+	accesslog: {
+		bufferingsize: null,
+		fields: {
+			defaultmode: null,
+			headers: {
+				defaultmode: null,
+				names: null
+			},
+			names: null
+		},
+		filepath: null,
+		filters: {
+			minduration: null,
+			retryattempts: null,
+			statuscodes: null
+		},
+		format: null
+	},
+	certificatesresolvers: {
+		acme: {
+			caserver: null,
+			dnschallenge: {
+				delaybeforecheck: null,
+				disablepropagationcheck: null,
+				provider: null,
+				resolvers: null
+			},
+			email: null,
+			httpchallenge: { entrypoint: null },
+			keytype: null,
+			storage: null,
+			tlschallenge: null
+		}
+	},
+	global: {
+		checknewversion: null,
+		sendanonymoususage: null
+	},
+	hostresolver: {
+		cnameflattening: null,
+		resolvconfig: null,
+		resolvdepth: null
+	},
+	log: {
+		filepath: null,
+		format: null,
+		level: null
+	},
+	ping: {
+		entrypoint: null,
+		manualrouting: null
+	},
+	metrics: {
+		datadog: {
+			addentrypointslabels: null,
+			address: null,
+			addserviceslabels: null,
+			pushinterval: null
+		},
+		influxdb: {
+			addentrypointslabels: null,
+			address: null,
+			addserviceslabels: null,
+			database: null,
+			password: null,
+			protocol: null,
+			pushinterval: null,
+			retentionpolicy: null,
+			username: null
+		},
+		prometheus: {
+			addentrypointslabels: null,
+			addserviceslabels: null,
+			buckets: null,
+			entrypoint: null,
+			manualrouting: null
+		},
+		statsd: {
+			addentrypointslabels: null,
+			address: null,
+			addserviceslabels: null,
+			prefix: null,
+			pushinterval: null
+		}
+	},
+	serverstransport: {
+		forwardingtimeouts: {
+			dialtimeout: null,
+			idleconntimeout: null,
+			responseheadertimeout: null
+		},
+		insecureskipverify: null,
+		maxidleconnsperhost: null,
+		rootcas: null
+	},
+	tracing: {
+		spannamelimit: null,
+		servicename: null,
+		datadog: {
+			bagageprefixheadername: null,
+			debug: null,
+			globaltag: null,
+			localagenthostport: null,
+			parentidheadername: null,
+			prioritysampling: null,
+			samplingpriorityheadername: null,
+			traceidheadername: null
+		},
+		haystack: {
+			baggageprefixheadername: null,
+			globaltag: null,
+			localagenthost: null,
+			localagentport: null,
+			parentidheadername: null,
+			spanidheadername: null,
+			traceidheadername: null
+		},
+		instana: {
+			localagenthost: null,
+			localagentport: null,
+			loglevel: null
+		},
+		jaeger: {
+			collector: {
+				endpoint: null,
+				password: null,
+				user: null
+			},
+			gen128bit: null,
+			localagenthostport: null,
+			propagation: null,
+			samplingparam: null,
+			samplingserverurl: null,
+			samplingtype: null,
+			tracecontextheadername: null
+		},
+		zipkin: {
+			httpendpoint: null,
+			id128bit: null,
+			samespan: null,
+			samplerate: null
 		}
 	}
 };

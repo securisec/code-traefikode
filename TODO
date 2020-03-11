@@ -29,6 +29,19 @@ Todo:
   ☐ check if inside the lables tag
 
 Archive:
+  ✔ https://docs.traefik.io/reference/static-configuration/cli/ @project(Traefik.Cli)
+  ✔ accesslog @project(Traefik.Cli)
+  ✔ api @project(Traefik.Cli)
+  ✔ certificatesresolvers @project(Traefik.Cli)
+  ✔ entrypoints @project(Traefik.Cli)
+  ✔ global @project(Traefik.Cli)
+  ✔ hostresolver @project(Traefik.Cli)
+  ✔ log @project(Traefik.Cli)
+  ✔ metrics @project(Traefik.Cli)
+  ✔ ping @project(Traefik.Cli)
+  ✔ providers (rest) @project(Traefik.Cli)
+  ✔ serverstransport @project(Traefik.Cli)
+  ✔ tracing @project(Traefik.Cli)
   ✔ only work with docker-compose.*.ya?ml @project(Code)
   ✔ entrypoints @project(Traefik.Cli)
   ✔ trigger snippets if prefix is '- ' @project(Todo)

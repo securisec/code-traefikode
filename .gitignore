@@ -4,3 +4,4 @@ node_modules
 *.vsix
 scrap/
 .envrc
+.DS_Store

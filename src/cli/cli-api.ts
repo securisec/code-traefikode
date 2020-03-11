@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { completeOptions, checkPrefix, isComposeFile } from '../helpers';
-import { dockerKeys } from '../completers/docker-keys';
+import { staticConfig } from '../completers/docker-keys';
 
 let cliProviderRegex = (regex: string, l: string) => {
 	let r = `\\-\\-\\s?["']?api\\.${regex}\\.$`;
@@ -18,7 +18,7 @@ const cliApiProviders = vscode.languages.registerCompletionItemProvider(
 
 			if (isComposeFile(document)) {
 				if (new RegExp(/--\s?["']?api\.$/).test(linePrefix)) {
-					return completeOptions(Object.keys(dockerKeys.api));
+					return completeOptions(Object.keys(staticConfig.api));
 				}
 				return;
 			}
