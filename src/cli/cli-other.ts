@@ -268,4 +268,14 @@ const cliTracing = vscode.languages.registerCompletionItemProvider(
 	'.'
 );
 
-export default [];
+export default [
+	cliAccesslog,
+	cliCertificatesresolvers,
+	cliGlobal,
+	cliHostresolver,
+	cliLog,
+	cliMetrics,
+	cliPing,
+	cliServerstransport,
+	cliTracing
+];

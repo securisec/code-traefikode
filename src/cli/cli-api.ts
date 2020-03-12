@@ -2,10 +2,6 @@ import * as vscode from 'vscode';
 import { completeOptions, checkPrefix, isComposeFile } from '../helpers';
 import { staticConfig } from '../completers/docker-keys';
 
-let cliProviderRegex = (regex: string, l: string) => {
-	let r = `\\-\\-\\s?["']?api\\.${regex}\\.$`;
-	return new RegExp(r).test(l);
-};
 
 const cliApiProviders = vscode.languages.registerCompletionItemProvider(
 	['yaml'],

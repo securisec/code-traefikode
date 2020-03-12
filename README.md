@@ -24,3 +24,6 @@ Snippets are provided for traefik labels for a container.
 <p align="center">
     <img src="https://github.com/securisec/code-traefikode/raw/master/resources/snippet.gif" width="65%">
 </p>
+
+## Known issues
+- Does not work when the Redhat yaml extension is installed

@@ -2,7 +2,7 @@
 	"name": "traefikode",
 	"displayName": "traefikode",
 	"description": "traefik auto complete",
-	"version": "0.0.5",
+	"version": "0.0.7",
 	"author": {
 		"name": "Hapsida @securisec"
 	},
@@ -44,10 +44,8 @@
 				"filenamePatterns": [
 					"docker-compose.yaml",
 					"docker-compose.yaml",
-					"docker-compose.*.yaml",
-					"docker-compose.*.yml",
-					"traefik.yml",
-					"traefik.yaml"
+					"docker-compose*.yaml",
+					"docker-compose*.yml"
 				]
 			}
 		],
