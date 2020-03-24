@@ -13,6 +13,7 @@ Simple [Traefik](https://docs.traefik.io/routing/providers/docker/) snippets and
 Intellisense works for the following:
 - Cli and provider arguments that are passed to traefik cli
 - Traefik labels for a container.
+- Provide intellisense in `traeik.yaml` files for dynamic configuration. 
 
 <p align="center">
     <img src="https://github.com/securisec/code-traefikode/raw/master/resources/%20cli.gif" width="65%">

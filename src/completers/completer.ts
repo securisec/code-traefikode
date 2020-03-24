@@ -3,7 +3,7 @@ import { checkPrefix, completeOptions, isComposeFile } from '../helpers';
 import { staticConfig } from './docker-keys';
 
 const staticCompleter = vscode.languages.registerCompletionItemProvider(
-	['yaml', 'dockerfile'],
+	'yaml',
 	{
 		provideCompletionItems(
 			document: vscode.TextDocument,
@@ -11,7 +11,7 @@ const staticCompleter = vscode.languages.registerCompletionItemProvider(
 		) {
 			let completers: vscode.CompletionItem | any = [];
 			let currentLine = document.lineAt(position).text;
-
+			
 			if (isComposeFile(document)) {
 				if (new RegExp(/--\s?["']?.(?<!=)$/).test(currentLine)) {
 					Object.keys(staticConfig).map((key) => {

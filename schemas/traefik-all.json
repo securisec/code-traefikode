@@ -1,0 +1,2248 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"$ref": "#/definitions/Welcome",
+	"definitions": {
+		"Welcome": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"global": {
+					"$ref": "#/definitions/Global"
+				},
+				"serversTransport": {
+					"$ref": "#/definitions/ServersTransport"
+				},
+				"entryPoints": {
+					"$ref": "#/definitions/EntryPoints"
+				},
+				"providers": {
+					"$ref": "#/definitions/Providers"
+				},
+				"api": {
+					"$ref": "#/definitions/API"
+				},
+				"metrics": {
+					"$ref": "#/definitions/Metrics"
+				},
+				"ping": {
+					"$ref": "#/definitions/Ping"
+				},
+				"log": {
+					"$ref": "#/definitions/Log"
+				},
+				"accessLog": {
+					"$ref": "#/definitions/AccessLog"
+				},
+				"tracing": {
+					"$ref": "#/definitions/Tracing"
+				},
+				"hostResolver": {
+					"$ref": "#/definitions/HostResolver"
+				},
+				"certificatesResolvers": {
+					"$ref": "#/definitions/CertificatesResolvers"
+				},
+				"http": {
+					"$ref": "#/definitions/HTTP"
+				},
+				"tcp": {
+					"$ref": "#/definitions/TCP"
+				},
+				"tls": {
+					"$ref": "#/definitions/WelcomeTLS"
+				}
+			},
+			"required": [],
+			"title": "Welcome"
+		},
+		"AccessLog": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"filePath": {
+					"type": "string"
+				},
+				"format": {
+					"type": "string"
+				},
+				"filters": {
+					"$ref": "#/definitions/Filters"
+				},
+				"fields": {
+					"$ref": "#/definitions/Fields"
+				},
+				"bufferingSize": {
+					"type": "integer"
+				}
+			},
+			"required": [],
+			"title": "AccessLog"
+		},
+		"Fields": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"defaultMode": {
+					"type": "string"
+				},
+				"names": {
+					"$ref": "#/definitions/Names"
+				},
+				"headers": {
+					"$ref": "#/definitions/FieldsHeaders"
+				}
+			},
+			"required": [],
+			"title": "Fields"
+		},
+		"FieldsHeaders": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"defaultMode": {
+					"type": "string"
+				},
+				"names": {
+					"$ref": "#/definitions/Names"
+				}
+			},
+			"required": [],
+			"title": "FieldsHeaders"
+		},
+		"Names": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name0": {
+					"type": "string"
+				},
+				"name1": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "Names"
+		},
+		"Filters": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"statusCodes": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"retryAttempts": {
+					"type": "boolean"
+				},
+				"minDuration": {
+					"type": "integer"
+				}
+			},
+			"required": [],
+			"title": "Filters"
+		},
+		"API": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"insecure": {
+					"type": "boolean"
+				},
+				"dashboard": {
+					"type": "boolean"
+				},
+				"debug": {
+					"type": "boolean"
+				}
+			},
+			"required": [],
+			"title": "API"
+		},
+		"CertificatesResolvers": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"CertificateResolver0": {
+					"$ref": "#/definitions/CertificateResolver"
+				},
+				"CertificateResolver1": {
+					"$ref": "#/definitions/CertificateResolver"
+				}
+			},
+			"required": [],
+			"title": "CertificatesResolvers"
+		},
+		"CertificateResolver": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"acme": {
+					"$ref": "#/definitions/ACME"
+				}
+			},
+			"required": [],
+			"title": "CertificateResolver"
+		},
+		"ACME": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"email": {
+					"type": "string"
+				},
+				"caServer": {
+					"type": "string"
+				},
+				"storage": {
+					"type": "string"
+				},
+				"keyType": {
+					"type": "string"
+				},
+				"dnsChallenge": {
+					"$ref": "#/definitions/DNSChallenge"
+				},
+				"httpChallenge": {
+					"$ref": "#/definitions/HTTPChallenge"
+				},
+				"tlsChallenge": {
+					"$ref": "#/definitions/TLSChallenge"
+				}
+			},
+			"required": [],
+			"title": "ACME"
+		},
+		"DNSChallenge": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"provider": {
+					"type": "string"
+				},
+				"delayBeforeCheck": {
+					"type": "integer"
+				},
+				"resolvers": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"disablePropagationCheck": {
+					"type": "boolean"
+				}
+			},
+			"required": [],
+			"title": "DNSChallenge"
+		},
+		"HTTPChallenge": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"entryPoint": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "HTTPChallenge"
+		},
+		"TLSChallenge": {
+			"type": "object",
+			"additionalProperties": false,
+			"title": "TLSChallenge"
+		},
+		"EntryPoints": {
+			"type": "object",
+			"additionalProperties": false,
+			"patternProperties": {
+				"^[A-Za-z0-9_\\-]+$": {
+					"$ref": "#/definitions/EntryPoint0"
+				}
+			},
+			"required": [],
+			"title": "EntryPoints"
+		},
+		"EntryPoint0": {
+			"type": "object",
+			"additionalProperties": false,
+			"description": "Entry points definition. (Default: false)",
+			"properties": {
+				"address": {
+					"type": "string",
+					"pattern": "^:[0-9]+$",
+					"description": "Entry point address"
+				},
+				"transport": {
+					"$ref": "#/definitions/Transport"
+				},
+				"proxyProtocol": {
+					"description": "Proxy-Protocol configuration. (Default: false)",
+					"$ref": "#/definitions/ForwardedHeaders"
+				},
+				"forwardedHeaders": {
+					"$ref": "#/definitions/ForwardedHeaders"
+				}
+			},
+			"required": [],
+			"title": "EntryPoint0"
+		},
+		"ForwardedHeaders": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"insecure": {
+					"type": "boolean",
+					"description": "Trust all forwarded headers. (Default: false)"
+				},
+				"trustedIPs": {
+					"type": "array",
+					"description": "Trust only forwarded headers from selected IPs.",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [],
+			"title": "ForwardedHeaders"
+		},
+		"Transport": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"lifeCycle": {
+					"$ref": "#/definitions/LifeCycle"
+				},
+				"respondingTimeouts": {
+					"$ref": "#/definitions/RespondingTimeouts"
+				}
+			},
+			"required": [],
+			"title": "Transport"
+		},
+		"LifeCycle": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"requestAcceptGraceTimeout": {
+					"description": "Duration to keep accepting requests before Traefik initiates the graceful shutdown procedure. (Default: 0)",
+					"type": "integer"
+				},
+				"graceTimeOut": {
+					"description": "Duration to give active requests a chance to finish before Traefik stops. (Default: 10)",
+					"type": "integer"
+				}
+			},
+			"required": [],
+			"title": "LifeCycle"
+		},
+		"RespondingTimeouts": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"readTimeout": {
+					"description": "ReadTimeout is the maximum duration for reading the entire request, including the body. If zero, no timeout is set. (Default: 0)",
+					"type": "integer"
+				},
+				"writeTimeout": {
+					"description": "WriteTimeout is the maximum duration before timing out writes of the response. If zero, no timeout is set. (Default: 0)",
+					"type": "integer"
+				},
+				"idleTimeout": {
+					"description": "IdleTimeout is the maximum amount duration an idle (keep-alive) connection will remain idle before closing itself. If zero, no timeout is set. (Default: 180)",
+					"type": "integer"
+				}
+			},
+			"required": [],
+			"title": "RespondingTimeouts"
+		},
+		"Global": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"checkNewVersion": {
+					"type": "boolean"
+				},
+				"sendAnonymousUsage": {
+					"type": "boolean"
+				}
+			},
+			"required": [],
+			"title": "Global"
+		},
+		"HostResolver": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"cnameFlattening": {
+					"type": "boolean"
+				},
+				"resolvConfig": {
+					"type": "string"
+				},
+				"resolvDepth": {
+					"type": "integer"
+				}
+			},
+			"required": [],
+			"title": "HostResolver"
+		},
+		"HTTP": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"routers": {
+					"$ref": "#/definitions/HTTPRouters"
+				},
+				"services": {
+					"$ref": "#/definitions/HTTPServices"
+				},
+				"middlewares": {
+					"$ref": "#/definitions/Middlewares"
+				}
+			},
+			"required": [],
+			"title": "HTTP"
+		},
+		"Middlewares": {
+			"type": "object",
+			"additionalProperties": false,
+			"patternProperties": {
+				"^[A-Za-z0-9_\\-]+$": {
+					"$ref": "#/definitions/Middleware00"
+				}
+			},
+			"required": [],
+			"title": "Middlewares"
+		},
+		"Middleware00": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"addPrefix": {
+					"$ref": "#/definitions/AddPrefix"
+				},
+				"basicAuth": {
+					"$ref": "#/definitions/Auth"
+				},
+				"buffering": {
+					"$ref": "#/definitions/Buffering"
+				},
+				"chain": {
+					"$ref": "#/definitions/Chain"
+				},
+				"circuitBreaker": {
+					"$ref": "#/definitions/CircuitBreaker"
+				},
+				"compress": {
+					"$ref": "#/definitions/Compress"
+				},
+				"contentType": {
+					"$ref": "#/definitions/ContentType"
+				},
+				"digestAuth": {
+					"$ref": "#/definitions/Auth"
+				},
+				"errors": {
+					"$ref": "#/definitions/Errors"
+				},
+				"forwardAuth": {
+					"$ref": "#/definitions/ForwardAuth"
+				},
+				"headers": {
+					"$ref": "#/definitions/Middleware00Headers"
+				},
+				"ipWhiteList": {
+					"$ref": "#/definitions/IPWhiteList"
+				},
+				"inFlightReq": {
+					"$ref": "#/definitions/InFlightReq"
+				},
+				"passTLSClientCert": {
+					"$ref": "#/definitions/PassTLSClientCERT"
+				},
+				"rateLimit": {
+					"$ref": "#/definitions/RateLimit"
+				},
+				"redirectRegex": {
+					"$ref": "#/definitions/RedirectRegex"
+				},
+				"redirectScheme": {
+					"$ref": "#/definitions/RedirectScheme"
+				},
+				"replacePath": {
+					"$ref": "#/definitions/ReplacePath"
+				},
+				"replacePathRegex": {
+					"$ref": "#/definitions/ReplacePathRegex"
+				},
+				"retry": {
+					"$ref": "#/definitions/Retry"
+				},
+				"stripPrefix": {
+					"$ref": "#/definitions/StripPrefix"
+				},
+				"stripPrefixRegex": {
+					"$ref": "#/definitions/StripPrefixRegex"
+				}
+			},
+			"required": [],
+			"title": "Middleware00"
+		},
+		"AddPrefix": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"prefix": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "AddPrefix"
+		},
+		"Auth": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"users": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"usersFile": {
+					"type": "string"
+				},
+				"realm": {
+					"type": "string"
+				},
+				"removeHeader": {
+					"type": "boolean"
+				},
+				"headerField": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "Auth"
+		},
+		"Buffering": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"maxRequestBodyBytes": {
+					"type": "integer"
+				},
+				"memRequestBodyBytes": {
+					"type": "integer"
+				},
+				"maxResponseBodyBytes": {
+					"type": "integer"
+				},
+				"memResponseBodyBytes": {
+					"type": "integer"
+				},
+				"retryExpression": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "Buffering"
+		},
+		"Chain": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"middlewares": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [],
+			"title": "Chain"
+		},
+		"CircuitBreaker": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"expression": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "CircuitBreaker"
+		},
+		"Compress": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"excludedContentTypes": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [],
+			"title": "Compress"
+		},
+		"ContentType": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"autoDetect": {
+					"type": "boolean"
+				}
+			},
+			"required": [],
+			"title": "ContentType"
+		},
+		"Errors": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"status": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"service": {
+					"type": "string"
+				},
+				"query": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "Errors"
+		},
+		"ForwardAuth": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"address": {
+					"type": "string"
+				},
+				"tls": {
+					"$ref": "#/definitions/ForwardAuthTLS"
+				},
+				"trustForwardHeader": {
+					"type": "boolean"
+				},
+				"authResponseHeaders": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [],
+			"title": "ForwardAuth"
+		},
+		"ForwardAuthTLS": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"ca": {
+					"type": "string"
+				},
+				"caOptional": {
+					"type": "boolean"
+				},
+				"cert": {
+					"type": "string"
+				},
+				"key": {
+					"type": "string"
+				},
+				"insecureSkipVerify": {
+					"type": "boolean"
+				}
+			},
+			"required": [],
+			"title": "ForwardAuthTLS"
+		},
+		"Middleware00Headers": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"customRequestHeaders": {
+					"$ref": "#/definitions/Names"
+				},
+				"customResponseHeaders": {
+					"$ref": "#/definitions/Names"
+				},
+				"accessControlAllowCredentials": {
+					"type": "boolean"
+				},
+				"accessControlAllowHeaders": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"accessControlAllowMethods": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"accessControlAllowOrigin": {
+					"type": "string"
+				},
+				"accessControlExposeHeaders": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"accessControlMaxAge": {
+					"type": "integer"
+				},
+				"addVaryHeader": {
+					"type": "boolean"
+				},
+				"allowedHosts": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"hostsProxyHeaders": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"sslRedirect": {
+					"type": "boolean"
+				},
+				"sslTemporaryRedirect": {
+					"type": "boolean"
+				},
+				"sslHost": {
+					"type": "string"
+				},
+				"sslProxyHeaders": {
+					"$ref": "#/definitions/Names"
+				},
+				"sslForceHost": {
+					"type": "boolean"
+				},
+				"stsSeconds": {
+					"type": "integer"
+				},
+				"stsIncludeSubdomains": {
+					"type": "boolean"
+				},
+				"stsPreload": {
+					"type": "boolean"
+				},
+				"forceSTSHeader": {
+					"type": "boolean"
+				},
+				"frameDeny": {
+					"type": "boolean"
+				},
+				"customFrameOptionsValue": {
+					"type": "string"
+				},
+				"contentTypeNosniff": {
+					"type": "boolean"
+				},
+				"browserXssFilter": {
+					"type": "boolean"
+				},
+				"customBrowserXSSValue": {
+					"type": "string"
+				},
+				"contentSecurityPolicy": {
+					"type": "string"
+				},
+				"publicKey": {
+					"type": "string"
+				},
+				"referrerPolicy": {
+					"type": "string"
+				},
+				"featurePolicy": {
+					"type": "string"
+				},
+				"isDevelopment": {
+					"type": "boolean"
+				}
+			},
+			"required": [],
+			"title": "Middleware00Headers"
+		},
+		"InFlightReq": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"amount": {
+					"type": "integer"
+				},
+				"sourceCriterion": {
+					"$ref": "#/definitions/SourceCriterion"
+				}
+			},
+			"required": [],
+			"title": "InFlightReq"
+		},
+		"SourceCriterion": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"ipstrategy": {
+					"$ref": "#/definitions/Strategy"
+				},
+				"requestHeaderName": {
+					"type": "string"
+				},
+				"requestHost": {
+					"type": "boolean"
+				}
+			},
+			"required": [],
+			"title": "SourceCriterion"
+		},
+		"Strategy": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"depth": {
+					"type": "integer"
+				},
+				"excludedIPs": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [],
+			"title": "Strategy"
+		},
+		"IPWhiteList": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"sourceRange": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"ipStrategy": {
+					"$ref": "#/definitions/Strategy"
+				}
+			},
+			"required": [],
+			"title": "IPWhiteList"
+		},
+		"PassTLSClientCERT": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"pem": {
+					"type": "boolean"
+				},
+				"info": {
+					"$ref": "#/definitions/Info"
+				}
+			},
+			"required": [],
+			"title": "PassTLSClientCERT"
+		},
+		"Info": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"notAfter": {
+					"type": "boolean"
+				},
+				"notBefore": {
+					"type": "boolean"
+				},
+				"sans": {
+					"type": "boolean"
+				},
+				"subject": {
+					"$ref": "#/definitions/Issuer"
+				},
+				"issuer": {
+					"$ref": "#/definitions/Issuer"
+				}
+			},
+			"required": [],
+			"title": "Info"
+		},
+		"Issuer": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"country": {
+					"type": "boolean"
+				},
+				"province": {
+					"type": "boolean"
+				},
+				"locality": {
+					"type": "boolean"
+				},
+				"organization": {
+					"type": "boolean"
+				},
+				"commonName": {
+					"type": "boolean"
+				},
+				"serialNumber": {
+					"type": "boolean"
+				},
+				"domainComponent": {
+					"type": "boolean"
+				}
+			},
+			"required": [],
+			"title": "Issuer"
+		},
+		"RateLimit": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"average": {
+					"type": "integer"
+				},
+				"burst": {
+					"type": "integer"
+				},
+				"sourceCriterion": {
+					"$ref": "#/definitions/SourceCriterion"
+				}
+			},
+			"required": [],
+			"title": "RateLimit"
+		},
+		"RedirectRegex": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"regex": {
+					"type": "string"
+				},
+				"replacement": {
+					"type": "string"
+				},
+				"permanent": {
+					"type": "boolean"
+				}
+			},
+			"required": [],
+			"title": "RedirectRegex"
+		},
+		"RedirectScheme": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"scheme": {
+					"type": "string"
+				},
+				"port": {
+					"type": "string"
+				},
+				"permanent": {
+					"type": "boolean"
+				}
+			},
+			"required": [],
+			"title": "RedirectScheme"
+		},
+		"ReplacePath": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"path": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "ReplacePath"
+		},
+		"ReplacePathRegex": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"regex": {
+					"type": "string"
+				},
+				"replacement": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "ReplacePathRegex"
+		},
+		"Retry": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"attempts": {
+					"type": "integer"
+				}
+			},
+			"required": [],
+			"title": "Retry"
+		},
+		"StripPrefix": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"prefixes": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"forceSlash": {
+					"type": "boolean"
+				}
+			},
+			"required": [],
+			"title": "StripPrefix"
+		},
+		"StripPrefixRegex": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"regex": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [],
+			"title": "StripPrefixRegex"
+		},
+		"HTTPRouters": {
+			"type": "object",
+			"additionalProperties": false,
+			"patternProperties": {
+				"^[A-Za-z0-9_\\-]+$": {
+					"$ref": "#/definitions/Router0"
+				}
+			},
+			"required": [],
+			"title": "HTTPRouters"
+		},
+		"Router0": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"entryPoints": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"middlewares": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"service": {
+					"type": "string"
+				},
+				"rule": {
+					"type": "string"
+				},
+				"priority": {
+					"type": "integer"
+				},
+				"tls": {
+					"$ref": "#/definitions/Router0TLS"
+				}
+			},
+			"required": [],
+			"title": "Router0"
+		},
+		"Router0TLS": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"options": {
+					"type": "string"
+				},
+				"certResolver": {
+					"type": "string"
+				},
+				"domains": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Domain"
+					}
+				},
+				"passthrough": {
+					"type": "boolean"
+				}
+			},
+			"required": [],
+			"title": "Router0TLS"
+		},
+		"Domain": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"main": {
+					"type": "string"
+				},
+				"sans": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [],
+			"title": "Domain"
+		},
+		"HTTPServices": {
+			"type": "object",
+			"additionalProperties": false,
+			"patternProperties": {
+				"^[A-Za-z0-9_\\-]+$": {
+					"$ref": "#/definitions/Service01"
+				}
+			},
+			"required": [],
+			"title": "HTTPServices"
+		},
+		"Service01": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"loadBalancer": {
+					"$ref": "#/definitions/Service01LoadBalancer"
+				},
+				"mirroring": {
+					"$ref": "#/definitions/Mirroring"
+				},
+				"weighted": {
+					"$ref": "#/definitions/Service01Weighted"
+				}
+			},
+			"required": [],
+			"title": "Service01"
+		},
+		"Service01LoadBalancer": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"sticky": {
+					"$ref": "#/definitions/Sticky"
+				},
+				"servers": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PurpleServer"
+					}
+				},
+				"healthCheck": {
+					"$ref": "#/definitions/HealthCheck"
+				},
+				"passHostHeader": {
+					"type": "boolean"
+				},
+				"responseForwarding": {
+					"$ref": "#/definitions/ResponseForwarding"
+				}
+			},
+			"required": [],
+			"title": "Service01LoadBalancer"
+		},
+		"HealthCheck": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"scheme": {
+					"type": "string"
+				},
+				"path": {
+					"type": "string"
+				},
+				"port": {
+					"type": "integer"
+				},
+				"interval": {
+					"type": "string"
+				},
+				"timeout": {
+					"type": "string"
+				},
+				"hostname": {
+					"type": "string"
+				},
+				"headers": {
+					"$ref": "#/definitions/Names"
+				}
+			},
+			"required": [],
+			"title": "HealthCheck"
+		},
+		"ResponseForwarding": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"flushInterval": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "ResponseForwarding"
+		},
+		"PurpleServer": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"url": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "PurpleServer"
+		},
+		"Sticky": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"cookie": {
+					"$ref": "#/definitions/Cookie"
+				}
+			},
+			"required": [],
+			"title": "Sticky"
+		},
+		"Cookie": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"secure": {
+					"type": "boolean"
+				},
+				"httpOnly": {
+					"type": "boolean"
+				}
+			},
+			"required": [],
+			"title": "Cookie"
+		},
+		"Mirroring": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"service": {
+					"type": "string"
+				},
+				"mirrors": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Mirror"
+					}
+				}
+			},
+			"required": [],
+			"title": "Mirroring"
+		},
+		"Mirror": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"percent": {
+					"type": "integer"
+				}
+			},
+			"required": [],
+			"title": "Mirror"
+		},
+		"Service01Weighted": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"services": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Service"
+					}
+				},
+				"sticky": {
+					"$ref": "#/definitions/Sticky"
+				}
+			},
+			"required": [],
+			"title": "Service01Weighted"
+		},
+		"Service": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"weight": {
+					"type": "integer"
+				}
+			},
+			"required": [],
+			"title": "Service"
+		},
+		"Log": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"level": {
+					"type": "string"
+				},
+				"filePath": {
+					"type": "string"
+				},
+				"format": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "Log"
+		},
+		"Metrics": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"prometheus": {
+					"$ref": "#/definitions/Prometheus"
+				},
+				"datadog": {
+					"$ref": "#/definitions/StatsDClass"
+				},
+				"statsD": {
+					"$ref": "#/definitions/StatsDClass"
+				},
+				"influxDB": {
+					"$ref": "#/definitions/InfluxDB"
+				}
+			},
+			"required": [],
+			"title": "Metrics"
+		},
+		"StatsDClass": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"address": {
+					"type": "string"
+				},
+				"pushInterval": {
+					"type": "integer"
+				},
+				"addEntryPointsLabels": {
+					"type": "boolean"
+				},
+				"addServicesLabels": {
+					"type": "boolean"
+				},
+				"prefix": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "StatsDClass"
+		},
+		"InfluxDB": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"address": {
+					"type": "string"
+				},
+				"protocol": {
+					"type": "string"
+				},
+				"pushInterval": {
+					"type": "integer"
+				},
+				"database": {
+					"type": "string"
+				},
+				"retentionPolicy": {
+					"type": "string"
+				},
+				"username": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				},
+				"addEntryPointsLabels": {
+					"type": "boolean"
+				},
+				"addServicesLabels": {
+					"type": "boolean"
+				}
+			},
+			"required": [],
+			"title": "InfluxDB"
+		},
+		"Prometheus": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"buckets": {
+					"type": "array",
+					"items": {
+						"type": "integer"
+					}
+				},
+				"addEntryPointsLabels": {
+					"type": "boolean"
+				},
+				"addServicesLabels": {
+					"type": "boolean"
+				},
+				"entryPoint": {
+					"type": "string"
+				},
+				"manualRouting": {
+					"type": "boolean"
+				}
+			},
+			"required": [],
+			"title": "Prometheus"
+		},
+		"Ping": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"entryPoint": {
+					"type": "string"
+				},
+				"manualRouting": {
+					"type": "boolean"
+				}
+			},
+			"required": [],
+			"title": "Ping"
+		},
+		"Providers": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"providersThrottleDuration": {
+					"type": "integer"
+				},
+				"docker": {
+					"$ref": "#/definitions/Docker"
+				},
+				"file": {
+					"$ref": "#/definitions/File"
+				},
+				"marathon": {
+					"$ref": "#/definitions/Marathon"
+				},
+				"kubernetesIngress": {
+					"$ref": "#/definitions/Kubernetes"
+				},
+				"kubernetesCRD": {
+					"$ref": "#/definitions/Kubernetes"
+				},
+				"rest": {
+					"$ref": "#/definitions/REST"
+				},
+				"rancher": {
+					"$ref": "#/definitions/Rancher"
+				},
+				"consulCatalog": {
+					"$ref": "#/definitions/ConsulCatalog"
+				}
+			},
+			"required": [],
+			"title": "Providers"
+		},
+		"ConsulCatalog": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"constraints": {
+					"type": "string"
+				},
+				"prefix": {
+					"type": "string"
+				},
+				"refreshInterval": {
+					"type": "string"
+				},
+				"requireConsistent": {
+					"type": "boolean"
+				},
+				"stale": {
+					"type": "boolean"
+				},
+				"cache": {
+					"type": "boolean"
+				},
+				"exposedByDefault": {
+					"type": "boolean"
+				},
+				"defaultRule": {
+					"type": "string"
+				},
+				"endpoint": {
+					"$ref": "#/definitions/Endpoint"
+				}
+			},
+			"required": [],
+			"title": "ConsulCatalog"
+		},
+		"Endpoint": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"address": {
+					"type": "string"
+				},
+				"scheme": {
+					"type": "string"
+				},
+				"datacenter": {
+					"type": "string"
+				},
+				"token": {
+					"type": "string"
+				},
+				"endpointWaitTime": {
+					"type": "string"
+				},
+				"tls": {
+					"$ref": "#/definitions/ForwardAuthTLS"
+				},
+				"httpAuth": {
+					"$ref": "#/definitions/HTTPAuth"
+				}
+			},
+			"required": [],
+			"title": "Endpoint"
+		},
+		"HTTPAuth": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"username": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "HTTPAuth"
+		},
+		"Docker": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"constraints": {
+					"type": "string"
+				},
+				"watch": {
+					"type": "boolean"
+				},
+				"endpoint": {
+					"type": "string"
+				},
+				"defaultRule": {
+					"type": "string"
+				},
+				"tls": {
+					"$ref": "#/definitions/ForwardAuthTLS"
+				},
+				"exposedByDefault": {
+					"type": "boolean"
+				},
+				"useBindPortIP": {
+					"type": "boolean"
+				},
+				"swarmMode": {
+					"type": "boolean"
+				},
+				"network": {
+					"type": "string"
+				},
+				"swarmModeRefreshSeconds": {
+					"type": "integer"
+				}
+			},
+			"required": [],
+			"title": "Docker"
+		},
+		"File": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"directory": {
+					"type": "string"
+				},
+				"watch": {
+					"type": "boolean"
+				},
+				"filename": {
+					"type": "string"
+				},
+				"debugLogGeneratedTemplate": {
+					"type": "boolean"
+				}
+			},
+			"required": [],
+			"title": "File"
+		},
+		"Kubernetes": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"endpoint": {
+					"type": "string"
+				},
+				"token": {
+					"type": "string"
+				},
+				"certAuthFilePath": {
+					"type": "string"
+				},
+				"disablePassHostHeaders": {
+					"type": "boolean"
+				},
+				"namespaces": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"labelSelector": {
+					"type": "string"
+				},
+				"ingressClass": {
+					"type": "string"
+				},
+				"throttleDuration": {
+					"type": "string"
+				},
+				"ingressEndpoint": {
+					"$ref": "#/definitions/IngressEndpoint"
+				}
+			},
+			"required": [],
+			"title": "Kubernetes"
+		},
+		"IngressEndpoint": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"ip": {
+					"type": "string"
+				},
+				"hostname": {
+					"type": "string"
+				},
+				"publishedService": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "IngressEndpoint"
+		},
+		"Marathon": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"constraints": {
+					"type": "string"
+				},
+				"trace": {
+					"type": "boolean"
+				},
+				"watch": {
+					"type": "boolean"
+				},
+				"endpoint": {
+					"type": "string"
+				},
+				"defaultRule": {
+					"type": "string"
+				},
+				"exposedByDefault": {
+					"type": "boolean"
+				},
+				"dcosToken": {
+					"type": "string"
+				},
+				"tls": {
+					"$ref": "#/definitions/ForwardAuthTLS"
+				},
+				"dialerTimeout": {
+					"type": "integer"
+				},
+				"responseHeaderTimeout": {
+					"type": "integer"
+				},
+				"tlsHandshakeTimeout": {
+					"type": "integer"
+				},
+				"keepAlive": {
+					"type": "integer"
+				},
+				"forceTaskHostname": {
+					"type": "boolean"
+				},
+				"basic": {
+					"$ref": "#/definitions/Basic"
+				},
+				"respectReadinessChecks": {
+					"type": "boolean"
+				}
+			},
+			"required": [],
+			"title": "Marathon"
+		},
+		"Basic": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"httpBasicAuthUser": {
+					"type": "string"
+				},
+				"httpBasicPassword": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "Basic"
+		},
+		"Rancher": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"constraints": {
+					"type": "string"
+				},
+				"watch": {
+					"type": "boolean"
+				},
+				"defaultRule": {
+					"type": "string"
+				},
+				"exposedByDefault": {
+					"type": "boolean"
+				},
+				"enableServiceHealthFilter": {
+					"type": "boolean"
+				},
+				"refreshSeconds": {
+					"type": "integer"
+				},
+				"intervalPoll": {
+					"type": "boolean"
+				},
+				"prefix": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "Rancher"
+		},
+		"REST": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"insecure": {
+					"type": "boolean"
+				}
+			},
+			"required": [],
+			"title": "REST"
+		},
+		"ServersTransport": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"insecureSkipVerify": {
+					"type": "boolean"
+				},
+				"rootCAs": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"maxIdleConnsPerHost": {
+					"type": "integer"
+				},
+				"forwardingTimeouts": {
+					"$ref": "#/definitions/ForwardingTimeouts"
+				}
+			},
+			"required": [],
+			"title": "ServersTransport"
+		},
+		"ForwardingTimeouts": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"dialTimeout": {
+					"type": "integer"
+				},
+				"responseHeaderTimeout": {
+					"type": "integer"
+				},
+				"idleConnTimeout": {
+					"type": "integer"
+				}
+			},
+			"required": [],
+			"title": "ForwardingTimeouts"
+		},
+		"TCP": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"routers": {
+					"$ref": "#/definitions/TCPRouters"
+				},
+				"services": {
+					"$ref": "#/definitions/TCPServices"
+				}
+			},
+			"required": [],
+			"title": "TCP"
+		},
+		"TCPRouters": {
+			"type": "object",
+			"additionalProperties": false,
+			"patternProperties": {
+				"^[A-Za-z0-9_\\-]+$": {
+					"$ref": "#/definitions/TCPRouter0"
+				}
+			},
+			"required": [],
+			"title": "TCPRouters"
+		},
+		"TCPRouter0": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"entryPoints": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"service": {
+					"type": "string"
+				},
+				"rule": {
+					"type": "string"
+				},
+				"tls": {
+					"$ref": "#/definitions/Router0TLS"
+				}
+			},
+			"required": [],
+			"title": "TCPRouter0"
+		},
+		"TCPServices": {
+			"type": "object",
+			"additionalProperties": false,
+			"patternProperties": {
+				"^[A-Za-z0-9_\\-]+$": {
+					"$ref": "#/definitions/TCPService01"
+				}
+			},
+			"required": [],
+			"title": "TCPServices"
+		},
+		"TCPService01": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"loadBalancer": {
+					"$ref": "#/definitions/TCPService01LoadBalancer"
+				},
+				"weighted": {
+					"$ref": "#/definitions/TCPService01Weighted"
+				}
+			},
+			"required": [],
+			"title": "TCPService01"
+		},
+		"TCPService01LoadBalancer": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"terminationDelay": {
+					"type": "integer"
+				},
+				"servers": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/FluffyServer"
+					}
+				}
+			},
+			"required": [],
+			"title": "TCPService01LoadBalancer"
+		},
+		"FluffyServer": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"address": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "FluffyServer"
+		},
+		"TCPService01Weighted": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"services": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Service"
+					}
+				}
+			},
+			"required": [],
+			"title": "TCPService01Weighted"
+		},
+		"WelcomeTLS": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"certificates": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Certificate"
+					}
+				},
+				"options": {
+					"$ref": "#/definitions/Options"
+				},
+				"stores": {
+					"$ref": "#/definitions/Stores"
+				}
+			},
+			"required": [],
+			"title": "WelcomeTLS"
+		},
+		"Certificate": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"certFile": {
+					"type": "string"
+				},
+				"keyFile": {
+					"type": "string"
+				},
+				"stores": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [],
+			"title": "Certificate"
+		},
+		"Options": {
+			"type": "object",
+			"additionalProperties": false,
+			"patternProperties": {
+				"^[A-Za-z0-9_\\-]+$": {
+					"$ref": "#/definitions/Options0"
+				}
+			},
+			"required": [],
+			"title": "Options"
+		},
+		"Options0": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"minVersion": {
+					"type": "string"
+				},
+				"maxVersion": {
+					"type": "string"
+				},
+				"cipherSuites": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"curvePreferences": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"clientAuth": {
+					"$ref": "#/definitions/ClientAuth"
+				},
+				"sniStrict": {
+					"type": "boolean"
+				}
+			},
+			"required": [],
+			"title": "Options0"
+		},
+		"ClientAuth": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"caFiles": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"clientAuthType": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "ClientAuth"
+		},
+		"Stores": {
+			"type": "object",
+			"additionalProperties": false,
+			"patternProperties": {
+				"^[A-Za-z0-9_\\-]+$": {
+					"$ref": "#/definitions/Store0"
+				}
+			},
+			"required": [],
+			"title": "Stores"
+		},
+		"Store0": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"defaultCertificate": {
+					"$ref": "#/definitions/DefaultCertificate"
+				}
+			},
+			"required": [],
+			"title": "Store0"
+		},
+		"DefaultCertificate": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"certFile": {
+					"type": "string"
+				},
+				"keyFile": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "DefaultCertificate"
+		},
+		"Tracing": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"serviceName": {
+					"type": "string"
+				},
+				"spanNameLimit": {
+					"type": "integer"
+				},
+				"jaeger": {
+					"$ref": "#/definitions/Jaeger"
+				},
+				"zipkin": {
+					"$ref": "#/definitions/Zipkin"
+				},
+				"datadog": {
+					"$ref": "#/definitions/TracingDatadog"
+				},
+				"instana": {
+					"$ref": "#/definitions/Instana"
+				},
+				"haystack": {
+					"$ref": "#/definitions/Haystack"
+				}
+			},
+			"required": [],
+			"title": "Tracing"
+		},
+		"TracingDatadog": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"localAgentHostPort": {
+					"type": "string"
+				},
+				"globalTag": {
+					"type": "string"
+				},
+				"debug": {
+					"type": "boolean"
+				},
+				"prioritySampling": {
+					"type": "boolean"
+				},
+				"traceIDHeaderName": {
+					"type": "string"
+				},
+				"parentIDHeaderName": {
+					"type": "string"
+				},
+				"samplingPriorityHeaderName": {
+					"type": "string"
+				},
+				"bagagePrefixHeaderName": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "TracingDatadog"
+		},
+		"Haystack": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"localAgentHost": {
+					"type": "string"
+				},
+				"localAgentPort": {
+					"type": "integer"
+				},
+				"globalTag": {
+					"type": "string"
+				},
+				"traceIDHeaderName": {
+					"type": "string"
+				},
+				"parentIDHeaderName": {
+					"type": "string"
+				},
+				"spanIDHeaderName": {
+					"type": "string"
+				},
+				"baggagePrefixHeaderName": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "Haystack"
+		},
+		"Instana": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"localAgentHost": {
+					"type": "string"
+				},
+				"localAgentPort": {
+					"type": "integer"
+				},
+				"logLevel": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "Instana"
+		},
+		"Jaeger": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"samplingServerURL": {
+					"type": "string"
+				},
+				"samplingType": {
+					"type": "string"
+				},
+				"samplingParam": {
+					"type": "integer"
+				},
+				"localAgentHostPort": {
+					"type": "string"
+				},
+				"gen128Bit": {
+					"type": "boolean"
+				},
+				"propagation": {
+					"type": "string"
+				},
+				"traceContextHeaderName": {
+					"type": "string"
+				},
+				"collector": {
+					"$ref": "#/definitions/Collector"
+				}
+			},
+			"required": [],
+			"title": "Jaeger"
+		},
+		"Collector": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"endpoint": {
+					"type": "string"
+				},
+				"user": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				}
+			},
+			"required": [],
+			"title": "Collector"
+		},
+		"Zipkin": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"httpEndpoint": {
+					"type": "string"
+				},
+				"sameSpan": {
+					"type": "boolean"
+				},
+				"id128Bit": {
+					"type": "boolean"
+				},
+				"sampleRate": {
+					"type": "integer"
+				}
+			},
+			"required": [],
+			"title": "Zipkin"
+		}
+	}
+}
