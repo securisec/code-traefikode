@@ -194,9 +194,33 @@ const middlewareSnippets = vscode.languages.registerCompletionItemProvider(
 	}
 );
 
+const secureSnippets = vscode.languages.registerCompletionItemProvider('yaml', {
+	provideCompletionItems(
+		document: vscode.TextDocument,
+		position: vscode.Position
+	) {
+		let allItems = [];
+
+		if (isComposeFile(document)) {
+			if (checkIfTraefik(document, position)) {
+				allItems.push(
+					makeSnippet({
+						label: 'traefikSecureMozillaObservatory',
+						text:
+							'"traefik.http.middlewares.${1:securedheaders}.headers.forcestsheader=true"\n- "traefik.http.middlewares.${1:securedheaders}.headers.sslRedirect=true"\n- "traefik.http.middlewares.${1:securedheaders}.headers.STSPreload=true"\n- "traefik.http.middlewares.${1:securedheaders}.headers.ContentTypeNosniff=true"\n- "traefik.http.middlewares.${1:securedheaders}.headers.BrowserXssFilter=true"\n- "traefik.http.middlewares.${1:securedheaders}.headers.STSIncludeSubdomains=true"\n- "traefik.http.middlewares.${1:securedheaders}.headers.stsSeconds=63072000"\n- "traefik.http.middlewares.${1:securedheaders}.headers.frameDeny=true"\n- "traefik.http.middlewares.${1:securedheaders}.headers.browserXssFilter=true"\n- "traefik.http.middlewares.${1:securedheaders}.headers.contentTypeNosniff=true"${0}'
+					})
+				);
+			}
+		}
+
+		return [...allItems];
+	}
+});
+
 export default [
 	snippetGeneric,
 	routerSnippets,
 	servicesSnippets,
-	middlewareSnippets
+	middlewareSnippets,
+	secureSnippets
 ];

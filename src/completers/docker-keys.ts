@@ -320,7 +320,59 @@ export const staticConfig = {
 		},
 		rest: {
 			insecure: null
-		}
+		},
+		etcd: {
+			endpoints: null,
+			rootKey: null,
+			username: null,
+			password: null,
+			tls: {
+				ca: null,
+				cert: null,
+				caoptional: null,
+				key: null,
+				insecureSkipVerify: null
+			},
+		},
+		consul: {
+			endpoints: null,
+			rootKey: null,
+			username: null,
+			password: null,
+			tls: {
+				ca: null,
+				cert: null,
+				caoptional: null,
+				key: null,
+				insecureSkipVerify: null
+			},
+		},
+		zookeeper: {
+			endpoints: null,
+			rootKey: null,
+			username: null,
+			password: null,
+			tls: {
+				ca: null,
+				cert: null,
+				caoptional: null,
+				key: null,
+				insecureSkipVerify: null
+			},
+		},
+		redis: {
+			endpoints: null,
+			rootKey: null,
+			username: null,
+			password: null,
+			tls: {
+				ca: null,
+				cert: null,
+				caoptional: null,
+				key: null,
+				insecureSkipVerify: null
+			},
+		},
 	},
 	api: {
 		insecure: null,
@@ -329,6 +381,12 @@ export const staticConfig = {
 	},
 	entryPoints: {
 		address: null,
+		'http.redirections.entryPoint': {
+			to: null,
+			scheme: null,
+			permanent: null,
+			priority: null,
+		},
 		transport: {
 			lifeCycle: {
 				requestAcceptGraceTimeout: null,

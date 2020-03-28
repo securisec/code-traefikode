@@ -261,6 +261,18 @@
 					"$ref": "#/definitions/EntryPoint0"
 				}
 			},
+			"properties": {
+				"tcpep": {
+					"type": "object",
+					"required": ["address"],
+					"properties": { "address": { "type": "string" } }
+				},
+				"udpep": {
+					"type": "object",
+					"required": ["address"],
+					"properties": { "address": { "type": "string" } }
+				}
+			},
 			"required": [],
 			"title": "EntryPoints"
 		},
@@ -271,8 +283,34 @@
 			"properties": {
 				"address": {
 					"type": "string",
-					"pattern": "^:[0-9]+$",
+					"pattern": "^:[0-9]+(/tcp|/udp)?$",
 					"description": "Entry point address"
+				},
+				"http": {
+					"type": "object",
+					"properties": {
+						"redirections": {
+							"type": "object",
+							"required": ["entryPoint"],
+							"properties": {
+								"entryPoint": {
+									"type": "object",
+									"required": ["to", "scheme"],
+									"properties": {
+										"to": {
+											"type": "string"
+										},
+										"scheme": {
+											"type": "string",
+											"default": "https"
+										},
+										"permanent": { "type": "boolean" },
+										"priority": { "type": "number" }
+									}
+								}
+							}
+						}
+					}
 				},
 				"transport": {
 					"$ref": "#/definitions/Transport"

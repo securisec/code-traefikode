@@ -21,7 +21,16 @@ const cliEntrypoints = vscode.languages.registerCompletionItemProvider(
 					return completeOptions(Object.keys(staticConfig.entryPoints));
 				}
 				if (cliEntryRegex('transport', linePrefix)) {
-					return completeOptions(Object.keys(staticConfig.entryPoints.transport));
+					return completeOptions(
+						Object.keys(staticConfig.entryPoints.transport)
+					);
+				}
+				if (cliEntryRegex('http.redirections.entryPoint', linePrefix)) {
+					return completeOptions(
+						Object.keys(
+							staticConfig.entryPoints['http.redirections.entryPoint']
+						)
+					);
 				}
 			}
 			return;

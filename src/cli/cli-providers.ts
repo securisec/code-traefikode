@@ -221,6 +221,106 @@ const cliFileProviders = vscode.languages.registerCompletionItemProvider(
 	'.'
 );
 
+const etcdProviders = vscode.languages.registerCompletionItemProvider(
+	['yaml'],
+	{
+		provideCompletionItems(
+			document: vscode.TextDocument,
+			position: vscode.Position
+		) {
+			let linePrefix = checkPrefix(document, position);
+
+			if (isComposeFile(document)) {
+				if (new RegExp(/--\s?["']?providers\.etcd\.$/).test(linePrefix)) {
+					return completeOptions(Object.keys(staticConfig.providers.etcd));
+				}
+				if (new RegExp(/--\s?["']?providers\.etcd\.tls\.$/).test(linePrefix)) {
+					return completeOptions(Object.keys(staticConfig.providers.etcd.tls));
+				}
+			}
+			return;
+		}
+	},
+	'.'
+);
+
+const consulProviders = vscode.languages.registerCompletionItemProvider(
+	['yaml'],
+	{
+		provideCompletionItems(
+			document: vscode.TextDocument,
+			position: vscode.Position
+		) {
+			let linePrefix = checkPrefix(document, position);
+
+			if (isComposeFile(document)) {
+				if (new RegExp(/--\s?["']?providers\.consul\.$/).test(linePrefix)) {
+					return completeOptions(Object.keys(staticConfig.providers.consul));
+				}
+				if (
+					new RegExp(/--\s?["']?providers\.consul\.tls\.$/).test(linePrefix)
+				) {
+					return completeOptions(
+						Object.keys(staticConfig.providers.consul.tls)
+					);
+				}
+			}
+			return;
+		}
+	},
+	'.'
+);
+
+const zookeeperProviders = vscode.languages.registerCompletionItemProvider(
+	['yaml'],
+	{
+		provideCompletionItems(
+			document: vscode.TextDocument,
+			position: vscode.Position
+		) {
+			let linePrefix = checkPrefix(document, position);
+
+			if (isComposeFile(document)) {
+				if (new RegExp(/--\s?["']?providers\.zookeeper\.$/).test(linePrefix)) {
+					return completeOptions(Object.keys(staticConfig.providers.zookeeper));
+				}
+				if (
+					new RegExp(/--\s?["']?providers\.zookeeper\.tls\.$/).test(linePrefix)
+				) {
+					return completeOptions(
+						Object.keys(staticConfig.providers.zookeeper.tls)
+					);
+				}
+			}
+			return;
+		}
+	},
+	'.'
+);
+
+const redisProviders = vscode.languages.registerCompletionItemProvider(
+	['yaml'],
+	{
+		provideCompletionItems(
+			document: vscode.TextDocument,
+			position: vscode.Position
+		) {
+			let linePrefix = checkPrefix(document, position);
+
+			if (isComposeFile(document)) {
+				if (new RegExp(/--\s?["']?providers\.redis\.$/).test(linePrefix)) {
+					return completeOptions(Object.keys(staticConfig.providers.redis));
+				}
+				if (new RegExp(/--\s?["']?providers\.redis\.tls\.$/).test(linePrefix)) {
+					return completeOptions(Object.keys(staticConfig.providers.redis.tls));
+				}
+			}
+			return;
+		}
+	},
+	'.'
+);
+
 export default [
 	cliDockerProviders,
 	cliKubernetescrdProviders,
@@ -229,5 +329,9 @@ export default [
 	cliMarathonProviders,
 	cliRancherProviders,
 	cliFileProviders,
-	cliRestProviders
+	cliRestProviders,
+	etcdProviders,
+	consulProviders,
+	zookeeperProviders,
+	redisProviders
 ];
