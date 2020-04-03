@@ -163,11 +163,8 @@
 		"CertificatesResolvers": {
 			"type": "object",
 			"additionalProperties": false,
-			"properties": {
-				"CertificateResolver0": {
-					"$ref": "#/definitions/CertificateResolver"
-				},
-				"CertificateResolver1": {
+			"patternProperties": {
+				"^[a-zA-Z0-9]+$": {
 					"$ref": "#/definitions/CertificateResolver"
 				}
 			},
@@ -219,7 +216,79 @@
 			"additionalProperties": false,
 			"properties": {
 				"provider": {
-					"type": "string"
+					"type": "string",
+					"enum": [
+						"acme-dns",
+						"alidns",
+						"auroradns",
+						"autodns",
+						"azure",
+						"bindman",
+						"bluecat",
+						"checkdomain",
+						"cloudns",
+						"cloudflare",
+						"cloudxns",
+						"conoha",
+						"constellix",
+						"digitalocean",
+						"dnsimple",
+						"dnsmadeeasy",
+						"dnspod",
+						"dode",
+						"dreamhost",
+						"duckdns",
+						"dyn",
+						"dynu",
+						"easydns",
+						"exec",
+						"exoscale",
+						"fastdns",
+						"gandi",
+						"gandiv5",
+						"glesys",
+						"godaddy",
+						"gcloud",
+						"hostingde",
+						"httpreq",
+						"iij",
+						"inwx",
+						"joker",
+						"lightsail",
+						"linode",
+						"linodev4",
+						"liquidweb",
+						"manual",
+						"mydnsjp",
+						"namecheap",
+						"namedotcom",
+						"namesilo",
+						"netcup",
+						"nifcloud",
+						"ns1",
+						"otc",
+						"ovh",
+						"designate",
+						"oraclecloud",
+						"pdns",
+						"rackspace",
+						"regru",
+						"rfc2136",
+						"route53",
+						"rimuhosting",
+						"sakuracloud",
+						"scaleway",
+						"selectel",
+						"servercow",
+						"stackpath",
+						"transip",
+						"vegadns",
+						"versio",
+						"vscale",
+						"vultr",
+						"zoneee",
+						"zonomi"
+					]
 				},
 				"delayBeforeCheck": {
 					"type": "integer"
